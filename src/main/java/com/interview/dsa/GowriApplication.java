@@ -8,10 +8,12 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.time.Instant;
 
 @SpringBootApplication
+@EnableScheduling
 public class GowriApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(GowriApplication.class);
