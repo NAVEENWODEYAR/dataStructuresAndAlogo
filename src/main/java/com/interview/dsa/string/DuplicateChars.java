@@ -1,36 +1,26 @@
 package com.interview.dsa.string;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  * @author NaveenWodeyar
- * @date 12-04-2025
+ * @date 19-04-2025
  */
 
-import java.util.Scanner;
-
-public class StringReverse {
-
-    static String reverseString(String str) {
-        StringBuilder reversedString = new StringBuilder();
-        try {
-            for (int i = str.length() - 1; i >= 0; i--) {
-                reversedString.append(str.charAt(i));
-            }
-        } catch (Exception e) {
-            System.out.println("Exception occurred: " + e.getLocalizedMessage());
-            throw new RuntimeException(e);
-        } finally {
-            System.out.println("Finally Block");
-            System.out.println("Intermediate reversed string: " + reversedString);
+public class DuplicateChars {
+    public static void printDuplicates(String str) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (char ch : str.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
-        return reversedString.toString();
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() > 1)
+                System.out.print(entry.getKey() + ": " + entry.getValue());
+        }
     }
 
     public static void main(String[] args) {
-        System.out.println("String reversal using for Loop");
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a string: ");
-        String input = sc.nextLine();
-
         // Get the Java runtime
         Runtime runtime = Runtime.getRuntime();
         runtime.gc(); // Run garbage collector
@@ -42,7 +32,7 @@ public class StringReverse {
         long startTime = System.nanoTime();
 
         // Reverse string
-        String output = reverseString(input);
+        printDuplicates("programming");
 
         // Record time after
         long endTime = System.nanoTime();
@@ -59,8 +49,6 @@ public class StringReverse {
         double memoryUsedKB = memoryUsedBytes / 1024.0;
 
         // Output results
-        System.out.println("\n======= Output =======");
-        System.out.println("Reversed string: " + output);
         System.out.println("Time taken: " + durationNano + " ns (" + durationMillis + " ms)");
         System.out.println("Memory used: " + memoryUsedBytes + " bytes (" + memoryUsedKB + " KB)");
 
@@ -68,7 +56,6 @@ public class StringReverse {
         System.out.println("\n======= Theoretical Time & Space Complexity =======");
         System.out.println("Time Complexity: O(n)");
         System.out.println("Space Complexity: O(n)");
-
-        sc.close();
     }
 }
+
