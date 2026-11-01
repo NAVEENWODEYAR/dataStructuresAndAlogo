@@ -29,5 +29,6 @@ public class CountAndSay {
         countAndSay("112");
         countAndSay("1122");
         countAndSay("1212");
+countAndSay("1234");
     }
 }
